@@ -1,0 +1,7 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+unit-testing-project,csc4700,Item,2,49,2,4,1,16,2,10,0,9
+unit-testing-project,csc4700,ShoppingCart,11,72,4,10,4,21,4,8,0,5
+unit-testing-project,csc4700,CartItem,7,68,4,6,2,21,4,10,0,9
+unit-testing-project,csc4700,Backup,16,209,5,13,4,48,5,10,0,6
+unit-testing-project,csc4700.exceptions,InvalidCountException,3,0,0,0,1,0,1,0,1,0
+unit-testing-project,csc4700.exceptions,SerializedFormatException,3,0,0,0,1,0,1,0,1,0
