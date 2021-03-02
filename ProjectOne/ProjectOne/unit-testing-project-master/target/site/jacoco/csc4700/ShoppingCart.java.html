@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ShoppingCart.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">unit-testing-project</a> &gt; <a href="index.source.html" class="el_package">csc4700</a> &gt; <span class="el_source">ShoppingCart.java</span></div><h1>ShoppingCart.java</h1><pre class="source lang-java linenums">package csc4700;
+
+import java.util.ArrayList;
+import java.util.List;
+
+<span class="fc" id="L6">public class ShoppingCart {</span>
+
+<span class="fc" id="L8">    private List&lt;CartItem&gt; cartItems = new ArrayList&lt;CartItem&gt;();</span>
+
+    public void addItem(Item item) {
+<span class="pc bpc" id="L11" title="1 of 2 branches missed.">        if (item == null) {</span>
+<span class="nc" id="L12">            throw new NullPointerException();</span>
+        }
+
+<span class="fc" id="L15">        CartItem cartItem = findCartItem(item);</span>
+
+        // If there is no CartItem, this is the first time it is being
+        // added to the cart and we need to create the mapping object
+<span class="fc bfc" id="L19" title="All 2 branches covered.">        if (cartItem == null) {</span>
+<span class="fc" id="L20">            cartItem = new CartItem(item);</span>
+<span class="fc" id="L21">            cartItems.add(cartItem);</span>
+        }
+
+        // Items may only be added one at a time in this implementation,
+        // so simply increment the quantity.
+<span class="fc" id="L26">        cartItem.incrementCountByOne();</span>
+<span class="fc" id="L27">    }</span>
+
+    public void deleteItem(Item item) {
+<span class="pc bpc" id="L30" title="1 of 2 branches missed.">        if (item == null) {</span>
+<span class="nc" id="L31">            throw new NullPointerException();</span>
+        }
+
+<span class="fc" id="L34">        CartItem cartItem = findCartItem(item);</span>
+
+        // If there is no corresponding CartItem object, there is nothing
+        // to delete. Some implementations will choose to throw an exception
+        // in this case, however for this project we'll simply exit (having
+        // met the end goal of not having the item in the cart).
+<span class="pc bpc" id="L40" title="1 of 2 branches missed.">        if (cartItem == null) {</span>
+<span class="nc" id="L41">            return;</span>
+        }
+
+<span class="pc bpc" id="L44" title="1 of 2 branches missed.">        if (cartItem.getCount() == 1) {</span>
+            // Removing the last of this item, so remove it
+            // fully from the cart
+<span class="fc" id="L47">            cartItems.remove(cartItem);</span>
+        }
+        else {
+            // Only decrement the quantity by one, but since there will still
+            // be at least one of the item desired, leave the CartItem in place.
+<span class="nc" id="L52">            cartItem.decrementCountByOne();</span>
+        }
+<span class="fc" id="L54">    }</span>
+
+    public CartItem findCartItem(Item item) {
+<span class="fc bfc" id="L57" title="All 2 branches covered.">        for (CartItem i : cartItems) {</span>
+<span class="fc bfc" id="L58" title="All 2 branches covered.">            if (i.getItem().equals(item)) {</span>
+<span class="fc" id="L59">                return i;</span>
+            }
+<span class="fc" id="L61">        }</span>
+<span class="fc" id="L62">        return null;</span>
+    }
+
+    public List&lt;CartItem&gt; getCartItems() {
+<span class="fc" id="L66">        return cartItems;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
